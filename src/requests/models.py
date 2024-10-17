@@ -114,6 +114,8 @@ class RequestEncodingMixin:
 
         if isinstance(data, (str, bytes)):
             return data
+        elif isinstance(data, list) and not data:
+            return ''
         elif hasattr(data, "read"):
             return data
         elif hasattr(data, "__iter__"):
